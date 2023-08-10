@@ -1,11 +1,9 @@
 import "./styles.scss";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const PortfolioFilter = () => {
-  const router = useRouter();
   const pathname = usePathname();
   const searchparams = useSearchParams();
   const [pfItem, setPfItem] = useState([]);
@@ -32,6 +30,8 @@ const PortfolioFilter = () => {
     params.set(name, value);
     return params.toString();
   });
+
+  // add query string to the query string
 
   return (
     <div className="pf_filter p-6 rounded-md">

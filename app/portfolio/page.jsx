@@ -36,8 +36,6 @@ const Portfolio = () => {
     }
   }, [getCategoryParam]);
 
-  console.log(getCategoryParam);
-
   return (
     <>
       <section className="portfolio_wrapper ">
