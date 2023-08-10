@@ -1,17 +1,40 @@
-// "use client";
+"use client";
 import PortfolioFilter from "../components/portfolio/PortfolioFilter";
 import PaginationRounded from "../components/pagination/Pagination";
 import PortfolioCard from "../components/portfolio/PortfolioCard";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
-const pf_items = async () => {
-  let data = await fetch(process.env.NEXT_PUBLIC_PORTFOLIO_ITEMS_API);
-  data = await data.json();
-  return data.PortfolioItems;
-};
+const Portfolio = () => {
+  const [pfItem, setPfItem] = useState([]);
+  const searchParams = useSearchParams();
+  const getCategoryParam = searchParams.get("siteCategory") || "";
 
-const Portfolio = async () => {
-  const portfolioData = await pf_items();
-  console.log(portfolioData);
+  // fetch api for get filtered items
+  const getFilteredItems = async () => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_PORTFOLIO_ITEMS_API}?siteCategory=${getCategoryParam}`
+    );
+    const data = await response.json();
+    setPfItem(data.PortfolioItems);
+  };
+
+  // fetch api for all items
+  const getAllItems = async () => {
+    const response = await fetch(process.env.NEXT_PUBLIC_PORTFOLIO_ITEMS_API);
+
+    const data = await response.json();
+    setPfItem(data.PortfolioItems);
+  };
+
+  // call api function with condition
+  useEffect(() => {
+    if (getCategoryParam !== "all") {
+      getFilteredItems();
+    } else {
+      getAllItems();
+    }
+  }, [getCategoryParam]);
 
   return (
     <>
@@ -22,13 +45,13 @@ const Portfolio = async () => {
           </h2>
         </div>
         <div className="container m-auto my-10">
-          <PortfolioFilter portfolioData={portfolioData} />
+          <PortfolioFilter />
         </div>
         <div className="container m-auto"></div>
         <div className="container portfolio_section m-auto mb-10">
           <div className="portfolio_items grid grid-cols-3 gap-10">
-            {portfolioData &&
-              portfolioData.map((currentPortfolio, _id) => {
+            {pfItem &&
+              pfItem.map((currentPortfolio, _id) => {
                 return (
                   <PortfolioCard key={_id} portfolioData={currentPortfolio} />
                 );

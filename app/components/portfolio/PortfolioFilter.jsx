@@ -1,26 +1,35 @@
 "use client";
 import "./styles.scss";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
-import Link from "next/link";
+import { useCallback, useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-const PortfolioFilter = ({ portfolioData }) => {
+const PortfolioFilter = () => {
+  const router = useRouter();
   const pathname = usePathname();
   const searchparams = useSearchParams();
+  const [pfItem, setPfItem] = useState([]);
+
+  // call api
+  useEffect(() => {
+    const getPfItems = async () => {
+      const response = await fetch(process.env.NEXT_PUBLIC_PORTFOLIO_ITEMS_API);
+      const data = await response.json();
+      setPfItem(data.PortfolioItems);
+    };
+    getPfItems();
+  }, []);
 
   // get category name from api
-  let categoryName = portfolioData.map((currentItem) => {
+  let categoryName = pfItem.map((currentItem) => {
     return currentItem.siteCategory;
   });
-
-  // get only unique category name
   const uniqueCategoryName = ["all", ...new Set(categoryName)];
 
   // create url query string
   const createQueryString = useCallback((name, value) => {
     const params = new URLSearchParams(searchparams);
     params.set(name, value);
-
     return params.toString();
   });
 
@@ -31,17 +40,19 @@ const PortfolioFilter = ({ portfolioData }) => {
           <div className="pf_category_items">
             {uniqueCategoryName.map((currentItem, index) => {
               return (
-                <Link
+                <button
                   key={index}
-                  href={
-                    pathname +
-                    "?" +
-                    createQueryString("siteCategory", currentItem)
-                  }
                   className="pf_category_items_link capitalize hover:text-hover"
+                  onClick={() => {
+                    router.push(
+                      pathname +
+                        "?" +
+                        createQueryString("siteCategory", currentItem)
+                    );
+                  }}
                 >
                   {currentItem}
-                </Link>
+                </button>
               );
             })}
           </div>

@@ -43,7 +43,6 @@ const portfolio_uri = process.env.DB_URI;
 const connectDB = async () => {
   try {
     await mongoose.connect(portfolio_uri);
-    console.log("Connected to Databse");
   } catch (error) {
     console.log(error);
   }
