@@ -1,8 +1,8 @@
-"use client";
 import "./styles.scss";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const PortfolioFilter = () => {
   const router = useRouter();
@@ -40,19 +40,17 @@ const PortfolioFilter = () => {
           <div className="pf_category_items">
             {uniqueCategoryName.map((currentItem, index) => {
               return (
-                <button
+                <Link
                   key={index}
                   className="pf_category_items_link capitalize hover:text-hover"
-                  onClick={() => {
-                    router.push(
-                      pathname +
-                        "?" +
-                        createQueryString("siteCategory", currentItem)
-                    );
-                  }}
+                  href={
+                    pathname +
+                    "?" +
+                    createQueryString("siteCategory", currentItem)
+                  }
                 >
                   {currentItem}
-                </button>
+                </Link>
               );
             })}
           </div>
