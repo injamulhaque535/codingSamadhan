@@ -20,7 +20,40 @@ export const POST = async () => {
   );
 };
 
-export const GET = async () => {
+export const GET = async (request) => {
+  // connect with databse
   await connectDB();
-  return NextResponse.json(await Portfolio.find());
+
+  const url = new URL(request.url);
+  const queryParam = {};
+
+  // filter by siteid
+  const siteid = url.searchParams.get("siteId");
+  if (siteid) {
+    queryParam.siteId = siteid;
+  }
+
+  // search by name
+  const name = url.searchParams.get("siteName");
+  if (name) {
+    queryParam.siteName = { $regex: name, $options: "i" };
+  }
+
+  // filter by category
+  const category = url.searchParams.get("siteCategory");
+  if (category) {
+    queryParam.siteCategory = category;
+  }
+
+  // sorting by asc and dsc
+  const sort = url.searchParams.get("sort");
+  if (sort == "asc") {
+    console.log("I am ASC");
+  } else if (sort == "dsc") {
+    console.log("I am DSC");
+  }
+
+  const PortfolioItems = await Portfolio.find(queryParam);
+
+  return NextResponse.json({ PortfolioItems });
 };
