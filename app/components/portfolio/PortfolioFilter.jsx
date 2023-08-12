@@ -31,8 +31,6 @@ const PortfolioFilter = () => {
     return params.toString();
   });
 
-  // add query string to the query string
-
   return (
     <div className="pf_filter p-6 rounded-md">
       <div className="pf_filter_content flex justify-center items-center">
