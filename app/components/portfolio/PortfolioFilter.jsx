@@ -1,10 +1,11 @@
 import "./styles.scss";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useCallback, useState, useEffect } from "react";
 import Link from "next/link";
 
 const PortfolioFilter = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const searchparams = useSearchParams();
   const [pfItem, setPfItem] = useState([]);
 
@@ -24,12 +25,24 @@ const PortfolioFilter = () => {
   });
   const uniqueCategoryName = ["all", ...new Set(categoryName)];
 
-  // create url query string
+  // create url query string for all filters
   const createQueryString = useCallback((name, value) => {
     const params = new URLSearchParams(searchparams);
     params.set(name, value);
     return params.toString();
   });
+
+  // search filter query set
+  const getFilterSearchValue = (event) => {
+    const getVal = event.target.value;
+    router.push(pathname + "?" + createQueryString("search", getVal));
+  };
+
+  // sort filter query set
+  const getFilterSortValue = (event) => {
+    const getVal = event.target.value;
+    router.push(pathname + "?" + createQueryString("sort", getVal));
+  };
 
   return (
     <div className="pf_filter p-6 rounded-md">
@@ -42,9 +55,7 @@ const PortfolioFilter = () => {
                   key={index}
                   className="pf_category_items_link capitalize hover:text-hover"
                   href={
-                    pathname +
-                    "?" +
-                    createQueryString("siteCategory", currentItem)
+                    pathname + "?" + createQueryString("category", currentItem)
                   }
                 >
                   {currentItem}
@@ -55,34 +66,28 @@ const PortfolioFilter = () => {
         </div>
         <div className="pf_search_filter w-2/12">
           <div className="pf_search_box">
-            <form onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="text"
-                name="searchText"
-                placeholder="Search..."
-                className=" w-4/5 border border-border py-2 px-3 rounded-full outline-0"
-                // value={searchText}
-                // onChange={getFilterValue}
-              />
-            </form>
+            <input
+              type="text"
+              name="searchText"
+              placeholder="Search..."
+              className=" w-4/5 border border-border py-2 px-3 rounded-full outline-0"
+              onChange={getFilterSearchValue}
+            />
           </div>
         </div>
         <div className="pf_sort_filter w-1/12">
           <div className="pf_sort_box text-right">
-            <form onSubmit={(e) => e.preventDefault()}>
-              <select
-                name="portfolioSort"
-                id="portfolioSort"
-                // onClick={sortingPortfolioItems}
-                className="pf_sort_select border border-border text-black rounded-full py-2 px-5 outline-none cursor-pointer appearance-none w-full"
-              >
-                <option value="#">Sort...</option>
-                <option value="latest">Latest</option>
-                <option value="oldest">Oldest</option>
-                <option value="a-z">A-Z</option>
-                <option value="z-a">Z-A</option>
-              </select>
-            </form>
+            <select
+              name="portfolioSort"
+              id="portfolioSort"
+              onClick={getFilterSortValue}
+              className="pf_sort_select border border-border text-black rounded-full py-2 px-5 outline-none cursor-pointer appearance-none w-full"
+            >
+              <option value="latest">Latest</option>
+              <option value="oldest">Oldest</option>
+              <option value="a-z">A-Z</option>
+              <option value="z-a">Z-A</option>
+            </select>
           </div>
         </div>
       </div>

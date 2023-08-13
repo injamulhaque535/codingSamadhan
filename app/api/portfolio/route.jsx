@@ -27,15 +27,28 @@ export const GET = async (request) => {
     queryParam.siteCategory = category;
   }
 
-  // sorting by asc and dsc
-  const sort = url.searchParams.get("sort");
-  if (sort == "asc") {
-    console.log("I am ASC");
-  } else if (sort == "dsc") {
-    console.log("I am DSC");
-  }
+  // get filtered item
+  let filteredPortfolioItems = Portfolio.find(queryParam);
 
-  const PortfolioItems = await Portfolio.find(queryParam);
+  // sort
+  const sort = url.searchParams.get("sort");
+  // sorting by latest and oldest
+  if (sort === "latest") {
+    filteredPortfolioItems.sort({ createdAt: -1 });
+  } else if (sort === "oldest") {
+    filteredPortfolioItems.sort({ createdAt: +1 });
+  }
+  const PortfolioItems = await filteredPortfolioItems;
+  // sort by asc and dsc
+  if (sort === "a-z") {
+    PortfolioItems.sort((a, b) => {
+      return a.siteName.toLowerCase().localeCompare(b.siteName.toLowerCase());
+    });
+  } else if (sort === "z-a") {
+    PortfolioItems.sort((a, b) => {
+      return b.siteName.toLowerCase().localeCompare(a.siteName.toLowerCase());
+    });
+  }
 
   return NextResponse.json({ PortfolioItems });
 };

@@ -8,13 +8,17 @@ import { useSearchParams } from "next/navigation";
 const Portfolio = () => {
   const [pfItem, setPfItem] = useState([]);
   const searchParams = useSearchParams();
-  const getCategoryParam = searchParams.get("siteCategory") || "";
+  const getCategoryParam = searchParams.get("category") || "";
+  const getFilterSearchParam = searchParams.get("search") || "";
+  const getFilterSortParam = searchParams.get("sort") || "";
 
   // fetch api for get filtered items
   const getFilteredItems = async () => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_PORTFOLIO_ITEMS_API}?siteCategory=${getCategoryParam}`
+      `${process.env.NEXT_PUBLIC_PORTFOLIO_ITEMS_API}?siteCategory=${getCategoryParam}&&siteName=${getFilterSearchParam}&&sort=${getFilterSortParam}`
     );
+
+    console.log(response);
     const data = await response.json();
     setPfItem(data.PortfolioItems);
   };
@@ -34,7 +38,7 @@ const Portfolio = () => {
     } else {
       getAllItems();
     }
-  }, [getCategoryParam]);
+  }, [getCategoryParam, getFilterSearchParam, getFilterSortParam]);
 
   return (
     <>
