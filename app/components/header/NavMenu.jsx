@@ -30,7 +30,7 @@ const NavMenu = () => {
             </li>
             <li>
               <Link
-                href="/portfolio"
+                href="/portfolio?page=1"
                 className={`nav_link font-medium uppercase text-sm duration-300 hover:text-hover ${
                   pathname == "/portfolio" ? "text-secondary" : "text-primary"
                 } `}

@@ -32,13 +32,13 @@ const PortfolioFilter = () => {
     return params.toString();
   });
 
-  // search filter query set
+  // searchFilter query set
   const getFilterSearchValue = (event) => {
     const getVal = event.target.value;
     router.push(pathname + "?" + createQueryString("search", getVal));
   };
 
-  // sort filter query set
+  // sortFilter query set
   const getFilterSortValue = (event) => {
     const getVal = event.target.value;
     router.push(pathname + "?" + createQueryString("sort", getVal));
