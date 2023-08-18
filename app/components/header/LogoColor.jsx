@@ -9,7 +9,7 @@ const LogoColor = () => {
         <Image
           width={180}
           height={50}
-          src="/img/logo-color.png"
+          src="/images/logo-color.png"
           alt="Logo"
           className="logo_color w-full"
         />
