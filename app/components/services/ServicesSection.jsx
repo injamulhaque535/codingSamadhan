@@ -5,11 +5,7 @@ import { MdPhonelink } from "react-icons/md";
 import { FaLaptopCode } from "react-icons/fa";
 import { BsFillShieldLockFill, BsDatabaseFillGear } from "react-icons/bs";
 import { RiPagesFill } from "react-icons/ri";
-import {
-  SiAmazonapigateway,
-  SiPagespeedinsights,
-  SiSemanticweb,
-} from "react-icons/si";
+import { SiAmazonapigateway } from "react-icons/si";
 
 const ServicesSection = () => {
   const ourServices = [
@@ -58,10 +54,10 @@ const ServicesSection = () => {
           Services we provide
         </h2>
         <div className="serviceCardWrapper grid grid-cols-3 gap-10">
-          {ourServices?.map((service) => {
+          {ourServices?.map((service, index) => {
             return (
               <>
-                <ServiceCard {...service} />
+                <ServiceCard key={index} {...service} />
               </>
             );
           })}

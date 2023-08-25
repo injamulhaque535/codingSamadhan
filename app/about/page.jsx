@@ -6,11 +6,8 @@ const About = () => {
   return (
     <>
       <Hero
-        heroText1="Welcome to Coding Samadhan"
-        heroText2="We will turn your imagination into code"
-        heroText3="We develop full stack website using most popular modern reliable web
-            technology to build your website like NodeJS, ExpressJS, ReactJS,
-            NextJS, MongoDB, etc."
+        heroText1="About Us"
+        heroText3="Unleash innovation with our coding services. From concept to code, we craft seamless digital solutions, harnessing the power of technology to bring your ideas to life."
       />
       <AboutSection />
     </>

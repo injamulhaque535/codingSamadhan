@@ -38,10 +38,10 @@ const WhyCS = () => {
           Why Coding Samadhan?
         </h2>
         <div className="whyCardWrapper grid grid-cols-1 gap-10">
-          {whyCsItems?.map((whycsitem) => {
+          {whyCsItems?.map((whycsitem, index) => {
             return (
               <>
-                <WhyCsCard {...whycsitem} />
+                <WhyCsCard key={index} {...whycsitem} />
               </>
             );
           })}

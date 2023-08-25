@@ -6,11 +6,8 @@ const Blogs = () => {
   return (
     <>
       <Hero
-        heroText1="Welcome to Coding Samadhan"
-        heroText2="We will turn your imagination into code"
-        heroText3="We develop full stack website using most popular modern reliable web
-            technology to build your website like NodeJS, ExpressJS, ReactJS,
-            NextJS, MongoDB, etc."
+        heroText1="Blogs"
+        heroText3="Dive into our coding-related blogs page, where we unravel the latest trends, tips, and insights. Empowering both novices and experts to excel in the dynamic world of programming."
       />
       <BlogsSection />
     </>

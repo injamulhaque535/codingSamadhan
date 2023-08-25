@@ -8,6 +8,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
+        "service-bg-img": "url('/images/service-bg.jpg')",
+        "portfolio-bg-img": "url('/images/portfolio-bg.png')",
+        "blogs-bg-img": "url('/images/blogs-bg.jpg')",
+        "about-bg-img": "url('/images/about-bg.jpg')",
+        "support-bg-img": "url('/images/support-bg.jpg')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",

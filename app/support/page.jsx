@@ -6,11 +6,8 @@ const Support = () => {
   return (
     <>
       <Hero
-        heroText1="Welcome to Coding Samadhan"
-        heroText2="We will turn your imagination into code"
-        heroText3="We develop full stack website using most popular modern reliable web
-            technology to build your website like NodeJS, ExpressJS, ReactJS,
-            NextJS, MongoDB, etc."
+        heroText1="Support"
+        heroText3="Our support page is your lifeline. Experience responsive assistance, troubleshooting, and expert guidance, ensuring smooth sailing on your coding journey. Your success is our priority."
       />
       <SupportSection />
     </>

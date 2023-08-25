@@ -50,6 +50,9 @@ const PortfolioFilter = () => {
     router.push(pathname + "?" + createQueryString("sort", getVal));
   };
 
+  // get url category param for active category color
+  const urlCategoryParam = searchparams.get("category");
+
   return (
     <div className="pf_filter p-6 rounded-md">
       <div className="pf_filter_content flex justify-center items-center">
@@ -59,7 +62,12 @@ const PortfolioFilter = () => {
               return (
                 <Link
                   key={index}
-                  className="pf_category_items_link capitalize hover:text-hover"
+                  className={`pf_category_items_link text-base font-medium text-primary uppercase hover:text-hover 
+                  ${
+                    currentItem.toLowerCase() == urlCategoryParam
+                      ? "text-secondary"
+                      : ""
+                  }`}
                   href={
                     pathname + "?" + createQueryString("category", currentItem)
                   }

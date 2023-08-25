@@ -4,6 +4,7 @@ import PaginationRounded from "../components/pagination/Pagination";
 import PortfolioCard from "../components/portfolio/PortfolioCard";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Hero from "../components/hero/Hero";
 
 const Portfolio = () => {
   const [pfItems, setPfItems] = useState([]);
@@ -50,12 +51,11 @@ const Portfolio = () => {
 
   return (
     <>
+      <Hero
+        heroText1="Our Portfolios"
+        heroText3="The websites I have built using MERN Stack."
+      />
       <section className="portfolio_wrapper ">
-        <div className="container m-auto mt-10 portfolio_title">
-          <h2 className="text-3xl text-black font-medium">
-            The websites I have built using MERN Stack
-          </h2>
-        </div>
         <div className="container m-auto my-10">
           <PortfolioFilter />
         </div>

@@ -60,16 +60,6 @@ const NavMenu = () => {
             </li>
             <li>
               <Link
-                href="/contact"
-                className={`nav_link font-medium uppercase text-sm duration-300 hover:text-hover ${
-                  pathname == "/contact" ? "text-secondary" : "text-primary"
-                } `}
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/support"
                 className={`nav_link font-medium uppercase text-sm duration-300 hover:text-hover ${
                   pathname == "/support" ? "text-secondary" : "text-primary"

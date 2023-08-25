@@ -7,11 +7,8 @@ const Services = () => {
   return (
     <>
       <Hero
-        heroText1="Welcome to Coding Samadhan"
-        heroText2="We will turn your imagination into code"
-        heroText3="We develop full stack website using most popular modern reliable web
-            technology to build your website like NodeJS, ExpressJS, ReactJS,
-            NextJS, MongoDB, etc."
+        heroText1="Our Services"
+        heroText3="Elevate your digital aspirations with our coding services. From web and app development to software solutions, we turn lines of code into innovative realities."
       />
       <ServicesSection />
       <WhyCS />
