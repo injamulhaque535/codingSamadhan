@@ -12,9 +12,15 @@ const PortfolioFilter = () => {
   // call api
   useEffect(() => {
     const getPfItems = async () => {
-      const response = await fetch(process.env.NEXT_PUBLIC_PORTFOLIO_ITEMS_API);
-      const data = await response.json();
-      setPfItem(data.PortfolioItems);
+      try {
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_PORTFOLIO_ITEMS_API
+        );
+        const data = await response.json();
+        setPfItem(data.PortfolioItems);
+      } catch (error) {
+        console.log("Internal server error", error);
+      }
     };
     getPfItems();
   }, []);

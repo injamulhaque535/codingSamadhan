@@ -47,8 +47,8 @@ const LoginForm = () => {
             Remember Me
           </label>
         </form>
-        <button className="primary_button login_submit_btn w-full !rounded-none !p-2 mt-5 !bg-green">
-          <span className="btn_text">Login</span>
+        <button className="button buttonGreen login_submit_btn w-full !rounded-none !p-2 mt-5">
+          <span className="buttonText">Login</span>
         </button>
         <div className="forget_password mt-3 text-right">
           <button className="text-white">Forget Password?</button>

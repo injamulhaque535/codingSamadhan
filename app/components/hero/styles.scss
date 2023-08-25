@@ -1,14 +1,39 @@
-.heroVideoWrapper {
+// home
+.HomeHeroVideoWrapper {
   height: 700px;
 
   &::after {
     content: "";
     position: absolute;
-    background-color: var(--overlay);
-    opacity: 0.8;
+    // background-color: var(--overlay);
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+  }
+}
+
+// service
+.heroSection {
+  background-image: url("/images/service-bg.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  .heroSectionOverlay {
+    background-color: var(--overlay);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.6;
   }
 }

@@ -55,8 +55,8 @@ const SignUpForm = () => {
             </span>
           </div>
         </form>
-        <button className="primary_button signup_submit_btn w-full !rounded-none !p-2">
-          <span className="btn_text">Sign Up</span>
+        <button className="button buttonGreen signup_submit_btn w-full !rounded-none !p-2">
+          <span className="buttonText">Sign Up</span>
         </button>
       </div>
     </>

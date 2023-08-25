@@ -1,10 +1,10 @@
 import "./styles.scss";
 
-const HeroSection = () => {
+const HomeHero = () => {
   return (
-    <section className="heroSection">
-      <div className="heroWrapper relative ">
-        <div className="heroVideoWrapper relative overflow-hidden  ">
+    <section className="HomeHomeHeroSection">
+      <div className="HomeHeroWrapper relative ">
+        <div className="HomeHeroVideoWrapper relative overflow-hidden  ">
           <video
             autoPlay
             muted
@@ -13,9 +13,9 @@ const HeroSection = () => {
             className="w-full"
           />
         </div>
-        <div className=" heroContentWrapper w-full h-full absolute top-0   ">
-          <div className="heroContents container m-auto flex flex-col items-start h-full justify-center ">
-            <div className="heroLeftContent w-1/2">
+        <div className=" HomeHeroContentWrapper w-full h-full absolute top-0   ">
+          <div className="HomeHeroContents container m-auto flex flex-col items-start h-full justify-center ">
+            <div className="HomeHeroLeftContent w-1/2">
               <h3 className="text-2xl text-white font-bold uppercase mb-3 tracking-wider	">
                 Welcome to Coding Samadhan
               </h3>
@@ -29,8 +29,8 @@ const HeroSection = () => {
                 web technology to build your website like NodeJS, ExpressJS,
                 ReactJS, NextJS, MongoDB, etc.
               </p>
-              <button className="primary_button !rounded-none !bg-green !py-2">
-                <span className="btn_text !text-lg !font-semibold ">
+              <button className="button buttonGreen !rounded-none !py-2">
+                <span className="buttonText !text-lg !font-semibold ">
                   Get A Quote
                 </span>
               </button>
@@ -42,4 +42,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default HomeHero;

@@ -29,10 +29,10 @@ const Header = () => {
               <div className="search_section flex items-center justify-end">
                 <div className="button_area ml-8">
                   <button
-                    className="primary_button"
+                    className="button buttonPrimary"
                     onClick={() => setShowpopup(true)}
                   >
-                    <a className="btn_text">Login / Sign Up</a>
+                    <a className="buttonText">Login / Sign Up</a>
                   </button>
                   <ModalOne
                     showpopup={showpopup}

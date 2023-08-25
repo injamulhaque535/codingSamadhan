@@ -21,17 +21,21 @@ const Portfolio = () => {
 
   // fetch api for get filtered items
   const getFilteredItems = async () => {
-    const response = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_PORTFOLIO_ITEMS_API
-      }?siteCategory=${getFilterCategoryParam}&&siteName=${getFilterSearchParam}&&sort=${
-        getFilterSortParam || "latest"
-      }&&page=${getPageNumberParam}`
-    );
+    try {
+      const response = await fetch(
+        `${
+          process.env.NEXT_PUBLIC_PORTFOLIO_ITEMS_API
+        }?siteCategory=${getFilterCategoryParam}&&siteName=${getFilterSearchParam}&&sort=${
+          getFilterSortParam || "latest"
+        }&&page=${getPageNumberParam}`
+      );
 
-    const data = await response.json();
-    setPfItems(data.PortfolioItems);
-    setTotalPfItemsCount(data.totalPfItems);
+      const data = await response.json();
+      setPfItems(data.PortfolioItems);
+      setTotalPfItemsCount(data.totalPfItems);
+    } catch (error) {
+      console.log("internal server error", error);
+    }
   };
 
   // call api function with condition
